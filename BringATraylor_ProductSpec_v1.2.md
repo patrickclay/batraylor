@@ -58,9 +58,9 @@ The entire application is a single-page layout with no navigation. All sections 
 
 1. **Hero** — Logo, tagline, two CTA buttons ("I Need a Repair" / "Help Me Find a Car")
 2. **CTA Cards** — Two cards linking to the form sections below with icons and descriptions
-3. **Repair Request Form** — Issue category dropdown, name, phone, details textarea
-4. **Car Finder Form** — Budget range dropdown, name, phone, preferences textarea
-5. **Story Banner** — "Meet Reid & Brianda" with shop and family photos, story copy, social proof
+3. **Story Banner** — "Meet Reid & Brianda" with shop and family photos, story copy, social proof
+4. **Repair Request Form** — Issue category dropdown, name, phone, details textarea
+5. **Car Finder Form** — Budget range dropdown, name, phone, preferences textarea
 6. **Footer** — Call/WhatsApp/Messenger buttons, logo, address, copyright
 
 ---
@@ -105,7 +105,7 @@ The entire application is a single-page layout with no navigation. All sections 
 Appear as buttons in the footer:
 - **Phone:** tel: link to (470) 239-0020
 - **WhatsApp:** Deep link to +1 (404) 904-2180
-- **Messenger:** Link to m.me/BringATraylor
+- **Messenger:** Link to m.me/batraylor
 
 ---
 
@@ -167,6 +167,11 @@ Vercel serverless function that handles both form types:
 batraylor/
 ├── api/
 │   └── send-lead.js              # Vercel serverless function
+├── public/
+│   ├── favicon.svg               # Brand blue "B" favicon
+│   ├── og-image.jpg              # 1200x630 social sharing image
+│   ├── robots.txt                # Crawler permissions + sitemap ref
+│   └── sitemap.xml               # XML sitemap
 ├── src/
 │   ├── assets/
 │   │   ├── logo.png              # Cropped, transparent background
@@ -194,7 +199,24 @@ batraylor/
 
 ---
 
-## 8. Future Features (Out of Scope for V1)
+## 8. SEO & Social
+
+- **H1:** Visually hidden (sr-only) in Hero: "Bring A Traylor — Auto Repair & Used Car Finder in Woodstock & Marietta, GA"
+- **Title tag:** "Bring A Traylor | Your Neighborhood Mechanic in Woodstock & Marietta, GA"
+- **Meta description:** Includes business name, services, and location
+- **Canonical:** `https://bringatraylor.com/`
+- **Open Graph:** type, url, title, description, image, locale, site_name
+- **Twitter Card:** summary_large_image with title, description, image
+- **OG image:** 1200x630 branded photo of Reid's shop (`public/og-image.jpg`)
+- **Structured data:** JSON-LD `AutoRepair` schema with name, address, phone, email, geo, areaServed, priceRange, aggregateRating, openingHours, sameAs (Facebook)
+- **robots.txt:** Allow all, references sitemap
+- **sitemap.xml:** Single URL entry for homepage
+- **Favicon:** SVG with brand blue background and white "B"
+- **Noscript fallback:** Basic HTML with business name, tagline, phone, WhatsApp link, and address
+
+---
+
+## 9. Future Features (Out of Scope for V1)
 
 These are not included in the initial build but may be added later:
 
@@ -203,14 +225,13 @@ These are not included in the initial build but may be added later:
 - SMS via Twilio when a lead comes in
 - Testimonials / review carousel
 - Appointment scheduling
-- SEO optimization (meta tags, structured data)
 - Completed work photo gallery
 - Analytics / traffic dashboards
 - A/B testing on CTA copy
 
 ---
 
-## 9. Changelog
+## 10. Changelog
 
 | Version | Date       | Changes                                                                 |
 | ------- | ---------- | ----------------------------------------------------------------------- |
@@ -225,3 +246,8 @@ These are not included in the initial build but may be added later:
 |         |            | — Documented color token values and Tailwind config                     |
 |         |            | — Added logo processing note (cropped, transparent PNG from JPG source) |
 |         |            | — Added `vercel.json`, `.env.example`, `.gitignore` to file structure   |
+| 1.2.1   | 2026-02-17 | Moved Story Banner above forms (Hero → CTACards → Story → Forms → Footer) |
+| 1.2.2   | 2026-02-17 | Fixed Messenger link to use correct page username (`m.me/batraylor`)       |
+| 1.2.3   | 2026-02-17 | SEO audit fixes: added H1 (sr-only), OG/Twitter meta tags, canonical,     |
+|         |            | AutoRepair JSON-LD structured data, robots.txt, sitemap.xml, favicon,     |
+|         |            | OG image (1200x630), noscript fallback. Added Section 8 (SEO & Social).   |

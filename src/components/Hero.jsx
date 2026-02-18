@@ -9,6 +9,7 @@ export default function Hero() {
           alt="Bring A Traylor — Your Neighborhood Mechanic"
           className="mx-auto w-64 md:w-80 mb-6 invert"
         />
+        <h1 className="sr-only">Bring A Traylor — Auto Repair &amp; Used Car Finder in Woodstock &amp; Marietta, GA</h1>
         <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
           Honest, no-pressure auto repair in Woodstock &amp; Marietta, GA.
           Mobile and shop service — plus we help you find quality used cars.
