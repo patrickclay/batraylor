@@ -11,7 +11,7 @@ const ISSUE_CATEGORIES = [
 ]
 
 export default function RepairForm() {
-  const [form, setForm] = useState({ name: '', phone: '', issue: '', details: '' })
+  const [form, setForm] = useState({ name: '', phone: '', year: '', make: '', model: '', trim: '', issue: '', details: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
 
   const update = (e) => setForm({ ...form, [e.target.name]: e.target.value })
@@ -27,7 +27,7 @@ export default function RepairForm() {
       })
       if (!res.ok) throw new Error('Failed to send')
       setStatus('success')
-      setForm({ name: '', phone: '', issue: '', details: '' })
+      setForm({ name: '', phone: '', year: '', make: '', model: '', trim: '', issue: '', details: '' })
     } catch {
       setStatus('error')
     }
@@ -84,6 +84,65 @@ export default function RepairForm() {
           />
         </div>
 
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="repair-year" className="block text-sm font-medium text-gray-700 mb-1">
+              Year <span className="text-gray-400">(optional)</span>
+            </label>
+            <input
+              id="repair-year"
+              name="year"
+              type="text"
+              inputMode="numeric"
+              maxLength={4}
+              value={form.year}
+              onChange={update}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none"
+              placeholder="e.g. 2018"
+            />
+          </div>
+          <div>
+            <label htmlFor="repair-make" className="block text-sm font-medium text-gray-700 mb-1">Make</label>
+            <input
+              id="repair-make"
+              name="make"
+              type="text"
+              required
+              value={form.make}
+              onChange={update}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none"
+              placeholder="e.g. Toyota"
+            />
+          </div>
+          <div>
+            <label htmlFor="repair-model" className="block text-sm font-medium text-gray-700 mb-1">Model</label>
+            <input
+              id="repair-model"
+              name="model"
+              type="text"
+              required
+              value={form.model}
+              onChange={update}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none"
+              placeholder="e.g. Camry"
+            />
+          </div>
+          <div>
+            <label htmlFor="repair-trim" className="block text-sm font-medium text-gray-700 mb-1">
+              Trim <span className="text-gray-400">(optional)</span>
+            </label>
+            <input
+              id="repair-trim"
+              name="trim"
+              type="text"
+              value={form.trim}
+              onChange={update}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none"
+              placeholder="e.g. SE, XLE"
+            />
+          </div>
+        </div>
+
         <div>
           <label htmlFor="repair-issue" className="block text-sm font-medium text-gray-700 mb-1">What's the issue?</label>
           <select
@@ -112,7 +171,7 @@ export default function RepairForm() {
             value={form.details}
             onChange={update}
             className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none resize-none"
-            placeholder="Year, make, model, symptoms, etc."
+            placeholder="Describe what's happening, any sounds, warning lights, etc."
           />
         </div>
 

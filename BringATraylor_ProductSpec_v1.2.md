@@ -78,7 +78,8 @@ The entire application is a single-page layout with no navigation. All sections 
 - No-start / not running
 - Other
 
-**Fields:** Name (required), Phone (required), Issue category (required), Details (optional)
+**Vehicle Fields:** Year (optional), Make (required), Model (required), Trim (optional)
+**Other Fields:** Name (required), Phone (required), Issue category (required), Details (optional)
 
 ### 5.2 Car Finder Form
 
@@ -251,3 +252,5 @@ These are not included in the initial build but may be added later:
 | 1.2.3   | 2026-02-17 | SEO audit fixes: added H1 (sr-only), OG/Twitter meta tags, canonical,     |
 |         |            | AutoRepair JSON-LD structured data, robots.txt, sitemap.xml, favicon,     |
 |         |            | OG image (1200x630), noscript fallback. Added Section 8 (SEO & Social).   |
+| 1.2.4   | 2026-02-17 | Added vehicle fields (year, make, model, trim) to repair form.            |
+|         |            | Make and model are required. Email includes combined vehicle string.       |

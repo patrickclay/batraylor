@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     return res.status(429).json({ error: 'Too many requests. Please try again later.' })
   }
 
-  const { type, name, phone, issue, details, budget, preferences } = req.body
+  const { type, name, phone, year, make, model, trim, issue, details, budget, preferences } = req.body
 
   if (!name || !phone || !type) {
     return res.status(400).json({ error: 'Missing required fields' })
@@ -37,10 +37,15 @@ export default async function handler(req, res) {
     ? `New Repair Request from ${name}`
     : `New Car Finder Request from ${name}`
 
+  const vehicle = isRepair
+    ? [year, make, model, trim].filter(Boolean).join(' ') || 'Not specified'
+    : null
+
   const body = isRepair
     ? `<h2>New Repair Request</h2>
        <p><strong>Name:</strong> ${name}</p>
        <p><strong>Phone:</strong> ${phone}</p>
+       <p><strong>Vehicle:</strong> ${vehicle}</p>
        <p><strong>Issue:</strong> ${issue || 'Not specified'}</p>
        <p><strong>Details:</strong> ${details || 'None provided'}</p>`
     : `<h2>New Car Finder Request</h2>
